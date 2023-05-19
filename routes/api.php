@@ -25,4 +25,4 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('showProdu
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
-Route::get('/authcheck', [AuthController::class, 'authCheck'])->name('authCheck');
+Route::get('/authcheck', [AuthController::class, 'authCheck'])->middleware('auth')->name('authCheck');
