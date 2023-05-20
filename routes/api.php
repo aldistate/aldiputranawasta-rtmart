@@ -25,6 +25,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('/authcheck', [AuthController::class, 'authCheck'])->name('authCheck');
   Route::post('/cart/{product}', [OrderController::class, 'addToCart'])->name('storeCart');
   Route::post('/checkout/{id}', [OrderController::class, 'checkout'])->name('checkout');
+  Route::post('/order/{order}/pay', [OrderController::class, 'submitReceipPayment'])->name('submitPayment');
+  Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirmPayment');
 });
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');

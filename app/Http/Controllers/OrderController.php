@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
@@ -82,6 +83,35 @@ class OrderController extends Controller
 
         return response()->json([
             'message' => 'Checkout Berhasil'
+        ], 200);
+    }
+
+    public function submitReceipPayment(Order $order, Request $request)
+    {
+        $file = $request->file('payment_receipt');
+        // menentukan path/nama file beserta extensionnya
+        $path = time() . '_' . $order->id . '.' . $file->getClientOriginalExtension();
+
+        // menentukan lokasi penyimpanan file
+        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+
+        $order->update([
+            'payment_receipt' => $path
+        ]);
+
+        return response()->json([
+            'message' => 'Bukti Pembayaran berhasil di upload'
+        ], 200);
+    }
+
+    public function confirm_payment(Order $order)
+    {
+        $order->update([
+            'is_paid' => true,
+        ]);
+
+        return response()->json([
+            'message' => 'Pembayaran berhasil disetujui'
         ]);
     }
 }
