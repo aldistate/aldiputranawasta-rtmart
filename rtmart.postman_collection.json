@@ -130,6 +130,49 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "eliza",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "eliza@yahoo.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{haha}}/register",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

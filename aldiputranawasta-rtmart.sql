@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Bulan Mei 2023 pada 06.50
+-- Waktu pembuatan: 20 Bulan Mei 2023 pada 07.07
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -202,7 +202,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `is_admin`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@gmail.com', NULL, '$2y$10$i.CTIq8QdyMiMDjlopDHd.5PEOVArJrgF3LRrIUucnuoc8I7G.PnO', 1, NULL, '2023-05-19 02:55:09', '2023-05-19 02:55:09'),
-(2, 'aldi', 'aldistate@yahoo.com', NULL, '$2y$10$6BU4f7hRRj1Ldzrzfxk5tOckoqdsEO9ApEkiEtDarZ.knUabXsFG6', 0, NULL, '2023-05-19 02:56:01', '2023-05-19 02:56:01');
+(2, 'aldi', 'aldistate@yahoo.com', NULL, '$2y$10$6BU4f7hRRj1Ldzrzfxk5tOckoqdsEO9ApEkiEtDarZ.knUabXsFG6', 0, NULL, '2023-05-19 02:56:01', '2023-05-19 02:56:01'),
+(3, 'eliza', 'eliza@yahoo.com', NULL, '$2y$10$Oc135T8b0h6SrE1t2tZhIejD2btD0/4apryC2un6MiJlCoieZaa06', 0, NULL, '2023-05-19 22:06:49', '2023-05-19 22:06:49');
 
 --
 -- Indexes for dumped tables
@@ -321,7 +322,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

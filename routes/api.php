@@ -30,6 +30,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/product', [ProductController::class, 'index'])->name('indexProduct');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('showProduct');
