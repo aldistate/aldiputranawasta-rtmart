@@ -18,6 +18,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
+        // jika product tidak ditemukan
         if (!$product) {
             return response()->json([
                 'message' => 'Product tidak ditemukan!'

@@ -23,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->group(function () {
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
   Route::get('/authcheck', [AuthController::class, 'authCheck'])->name('authCheck');
-  Route::post('/cart/{product}', [OrderController::class, 'store'])->name('storeCart');
+  Route::post('/cart/{product}', [OrderController::class, 'addToCart'])->name('storeCart');
+  Route::post('/checkout/{id}', [OrderController::class, 'checkout'])->name('checkout');
 });
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
