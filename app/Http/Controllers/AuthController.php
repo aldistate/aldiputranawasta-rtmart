@@ -51,4 +51,6 @@ class AuthController extends Controller
             'email' => Auth::user()->email
         ]);
     }
+
+    
 }
