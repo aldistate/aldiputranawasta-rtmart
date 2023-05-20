@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "3ac7359f-3f22-40af-ac89-5dc2b1b7f4f7",
+		"name": "rtmart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26825723"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{haha}}/product",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{haha}}/product/1",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@gmail.com\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{haha}}/login",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|qLLzEtfWAWcpehP3YlcV1jWD29rFP8nMED1dNyk7",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{haha}}/logout",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Check",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|qLLzEtfWAWcpehP3YlcV1jWD29rFP8nMED1dNyk7",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{haha}}/authcheck",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"authcheck"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|qLLzEtfWAWcpehP3YlcV1jWD29rFP8nMED1dNyk7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{haha}}/cart/1",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|qLLzEtfWAWcpehP3YlcV1jWD29rFP8nMED1dNyk7",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{haha}}/checkout/1",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"checkout",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|qLLzEtfWAWcpehP3YlcV1jWD29rFP8nMED1dNyk7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "payment_receipt",
+									"type": "file",
+									"src": "/C:/Users/Aldi/Documents/penampung/contoh-foto/laravel-9-ecommerce/Pembayaran_berhasil.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{haha}}/order/1/pay",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"order",
+								"1",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|qLLzEtfWAWcpehP3YlcV1jWD29rFP8nMED1dNyk7",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{haha}}/order/1/confirm",
+							"host": [
+								"{{haha}}"
+							],
+							"path": [
+								"order",
+								"1",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

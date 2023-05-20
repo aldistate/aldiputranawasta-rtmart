@@ -24,19 +24,19 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // User::create([
-        //     'name' => 'admin',
-        //     'email' => 'admin@gmail.com',
-        //     'password' => bcrypt('admin'),
-        //     'is_admin' => true,
-        // ]);
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'is_admin' => true,
+        ]);
 
-        // User::create([
-        //     'name' => 'aldi',
-        //     'email' => 'aldistate@yahoo.com',
-        //     'password' => bcrypt('password'),
-        //     'is_admin' => false,
-        // ]);
+        User::create([
+            'name' => 'aldi',
+            'email' => 'aldistate@yahoo.com',
+            'password' => bcrypt('password'),
+            'is_admin' => false,
+        ]);
 
         Product::create([
             'name' => 'Keyboard Fantech 1',
