@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function store(Product $product, Request $request)
+    public function addToCart(Product $product, Request $request)
     {
         $user_id = Auth::id();
         $product_id = $product->id;
@@ -18,7 +20,10 @@ class OrderController extends Controller
             ->where('user_id', $user_id)
             ->first();
         
+        // jika cart kosong(null)
         if ($existing_cart == null) {
+            // amount harus lebih besar dari 1
+            // dan amount harus lebih kecil dari jumlah stok produk
             $request->validate([
                 'amount' => 'required|gte:1|lte:' . $product->stock, 
             ]);
@@ -29,6 +34,7 @@ class OrderController extends Controller
                 'amount' => $request->amount,
             ]);
         } else {
+            // jika cart sudah ada
             $request->validate([
                 'amount' => 'required|gte:1|lte:' . ($product->stock - $existing_cart->amount),
             ]);
@@ -39,5 +45,43 @@ class OrderController extends Controller
         }
 
         return response()->json(['message' => 'Berhasil memasukan ke keranjang'], 201);
+    }
+
+    public function checkout($id)
+    {
+        $cartId = Cart::find($id);
+        $user_id = Auth::id();
+        $carts = Cart::where('user_id', $user_id)->get();
+
+        // jika keranjang kosong
+        if ($carts == null) {
+            return response()->json([
+                'message' => 'Keranjang kosong'
+            ]);
+        }
+
+        $order = Order::create([
+            'user_id' => $user_id
+        ]);
+
+        // untuk setiap produk di keranjang
+        foreach ($carts as $cart) {
+            $product = Product::find($cart->product_id);
+            $product->update([
+                'stock' => $product->stock - $cart->amount
+            ]);
+
+            Transaction::create([
+                'amount' => $cart->amount,
+                'product_id' => $cart->product_id,
+                'order_id' => $order->id
+            ]);
+
+            $cart->delete();
+        }
+
+        return response()->json([
+            'message' => 'Checkout Berhasil'
+        ]);
     }
 }

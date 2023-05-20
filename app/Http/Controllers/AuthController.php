@@ -10,11 +10,13 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        // validasi
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
+        // jika validasi gagal, munculkan pesan errornya
         if ($validator->fails()) {
             return response()->json([
                 'error' => $validator->errors()
@@ -23,6 +25,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
+        // jika inputan benar
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('MyApp')->plainTextToken;
@@ -30,6 +33,7 @@ class AuthController extends Controller
                 'token' => $token
             ], 200);
         } else {
+            // jika gagal
             return response()->json([
                 'error' => 'Unauthorized'
             ], 401);
@@ -44,6 +48,7 @@ class AuthController extends Controller
         ], 200);
     }
 
+    // untuk mengecek autentikasi yg masuk
     public function authCheck()
     {
         return response()->json([
@@ -51,6 +56,4 @@ class AuthController extends Controller
             'email' => Auth::user()->email
         ]);
     }
-
-    
 }
